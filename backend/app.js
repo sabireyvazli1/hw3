@@ -12,6 +12,12 @@ const connection = mysql.createConnection({
   database: "socialmedia",
 });
 
+app.get("/student",(req, res) => {
+  connection.query("select * from users", function (err, result, fields) {
+    console.log(result);
+    res.send(result);
+  });
+});
 app.get("/student/:id", (req, res) => {
   const elem = req.params;
   let found = false; // Flag to track if a matching record is found
